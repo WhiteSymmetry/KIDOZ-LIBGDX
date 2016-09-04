@@ -95,7 +95,7 @@ Example:
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 
         // Create the libgdx View
-        View gameView = initializeForView(new NippyFishGame(this), config);
+        View gameView = initializeForView(new YourGame( ), config);
         // Add the libgdx view
         mContainer.addView(gameView);
 
@@ -162,8 +162,11 @@ Example:
             });
   }
    
-
 ``` 
+
+ #### How to control the KIDOZ SDK `Widget`s and `View` from your Game
+ 
+ 
 
 
 
