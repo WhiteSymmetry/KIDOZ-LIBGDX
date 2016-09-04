@@ -69,6 +69,7 @@ Example:
         ...
     </application>
 </manifest>
+```
  
 #### Example of adding a widget to activity
 ```groovy
