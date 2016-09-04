@@ -6,10 +6,10 @@
 
 *Updated to KIDOZ SDK version 0.5.9*
 
-For full explanation of KIDOZ SDK fo Gradle (Android Studio) please take a look at [HERE](https://github.com/Kidoz-SDK/KIDOZ_Android_SDK_Example-Android-Studio)
+For full Documentation of KIDOZ SDK fo Gradle (Android Studio) please take a look at [HERE](https://github.com/Kidoz-SDK/KIDOZ_Android_SDK_Example-Android-Studio)
 
-To add KIDOZ SDK to libGDX project add KIDOZ SDK dependency to `build.gradle` file of `android` Module
-[<img src="https://s3.amazonaws.com/kidoz-cdn/sdk/GitHub_Tutorial_Img/lib_gdx_tut_1.png" width="200px" height="262px">]
+#### To add KIDOZ SDK to libGDX project add KIDOZ SDK dependency to `build.gradle` file of `android` Module
+<img src="https://s3.amazonaws.com/kidoz-cdn/sdk/GitHub_Tutorial_Img/lib_gdx_tut_1.png" width="200px" height="262px">
 
 #### Add KIDOZ SDK dependency in the android {...} section `build.gradle` file 
 ```groovy
@@ -24,7 +24,7 @@ android {
 }
 ```
 
-#### AndroidMainifest.xml  Definitions (IMPORTANT) to `AndroidMainifest.xml` file in the same `android` Module
+#### Add AndroidMainifest.xml  Definitions (IMPORTANT) to `AndroidMainifest.xml` file in the same `android` Module
 For correct flow of the SDK, add the following line in your `AndroidMainifest.xml` file, for each `Activity` that uses the SDK functionality.
 ```groovy
  android:configChanges="screenLayout|screenSize|orientation|keyboardHidden|keyboard"
