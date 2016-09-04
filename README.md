@@ -164,9 +164,9 @@ Example:
    
 ``` 
 
-### How to control the KIDOZ SDK `Widget`s and `View` from your Game
+### How to control the KIDOZ SDK `Widgets` and `Views` from Your Game
  
- In the class that Extends Game create an `Interface` to comunicate with `AndroidLAuncher` class
+ In the class that Extends Game, create an `Interface` to comunicate with `AndroidLAuncher` class
  
 ```groovy
 public class YourGame extends Game {
@@ -191,9 +191,9 @@ public class YourGame extends Game {
 
 ```
 
- Let extended `AndroidLAuncher` class to implement the `interface` and pass the instance in the constractor of `YourGame`
- also create a `Handler` that will pass the calls to UI Thread.
- That way is posible to controll Kidoz SDK ads from the GAME.
+ Let extended `AndroidLauncher` class to implement the `interface` and pass the instance in the constractor of `YourGame`
+ also create a `Handler` that will pass the calls to UI Thread to avoid incorrect thread calls.
+ That way its posible to controll Kidoz SDK ads from the GAME depending on game logic.
  
  ```groovy
  public class AndroidLauncher extends AndroidApplication implements YourGame.IOnAddControllInterface {
@@ -201,6 +201,7 @@ public class YourGame extends Game {
         private final int SHOW_INTERSTITIAL_AD = 1;
         private final int OPEN_PANEL_AD = 2;
       
+        // Execution Handler that execute calls on UI thread
         protected Handler handler = new Handler() {
         @Override
 	public void handleMessage(Message msg) {
@@ -221,7 +222,7 @@ public class YourGame extends Game {
  	@Override
         protected void onCreate(Bundle savedInstanceState) {
          ...
-         
+          // (this) is the instance of AndroidLauncher that implement the Interface
          View gameView = initializeForView(new YourGame(this), config);
          
          ...
@@ -229,11 +230,13 @@ public class YourGame extends Game {
         
          @Override
         public void showInterstitial() {
+             // Sents call to show interstitial, executed on UI thread
              handler.sendEmptyMessage(SHOW_INTERSTITIAL_AD);
         }
 
     	@Override
     	public void openPanel() {
+    	      // Sents call to open panel widget, executed on UI thread
               handler.sendEmptyMessage(OPEN_PANEL_AD);
     	}
  }
