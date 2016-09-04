@@ -164,9 +164,57 @@ Example:
    
 ``` 
 
- #### How to control the KIDOZ SDK `Widget`s and `View` from your Game
+### How to control the KIDOZ SDK `Widget`s and `View` from your Game
  
+ #### In the class that Extends Game create an `Interface` to comunicate with `AndroidLAuncher` class
  
+```groovy
+public class YourGame extends Game {
 
+   IOnAddControllInterface mInterface;
+   
+   public YourGame (IOnAddControllInterface interface) {
+   	this.mInterface = interface
+   
+        ...
+   }
+   
+   ...
+   
+   public interface IOnAddControllInterface {
+       public void showInterstitial()
+       public void openPanel()
+       
+       ... // Additional functions you need
+   }
+}
+
+```
+
+ #### Let extended `AndroidLAuncher` class to implement the `interface` and pass the instance in the constractor of `YourGame`
+ ```groovy
+ public class AndroidLauncher extends AndroidApplication implements YourGame.IOnAddControllInterface {
+ 
+ 	@Override
+        protected void onCreate(Bundle savedInstanceState) {
+         ...
+         
+         View gameView = initializeForView(new YourGame(this), config);
+         
+         ...
+        }
+        
+         @Override
+        public void showInterstitial() {
+             handler.sendEmptyMessage(SHOW_PANEL);
+        }
+
+    	@Override
+    	public void openPanel() {
+              handler.sendEmptyMessage(HIDE_COLLAPSE_PANEL);
+    	}
+ }
+ 
+```
 
 
