@@ -166,7 +166,7 @@ Example:
 
 ### How to control the KIDOZ SDK `Widget`s and `View` from your Game
  
- #### In the class that Extends Game create an `Interface` to comunicate with `AndroidLAuncher` class
+ In the class that Extends Game create an `Interface` to comunicate with `AndroidLAuncher` class
  
 ```groovy
 public class YourGame extends Game {
@@ -191,9 +191,30 @@ public class YourGame extends Game {
 
 ```
 
- #### Let extended `AndroidLAuncher` class to implement the `interface` and pass the instance in the constractor of `YourGame`
+ Let extended `AndroidLAuncher` class to implement the `interface` and pass the instance in the constractor of `YourGame`
+ also create a `Handler` that will pass the calls to UI Thread
  ```groovy
  public class AndroidLauncher extends AndroidApplication implements YourGame.IOnAddControllInterface {
+      
+        private final int SHOW_INTERSTITIAL_AD = 1;
+        private final int OPEN_PANEL_AD = 2;
+      
+        protected Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case SHOW_INTERSTITIAL_AD: {
+                    mKidozInterstitial.loadAd();
+                    break;
+                }
+                case OPEN_PANEL_AD: {
+                    mPanelView.expandPanelView();
+                    break;
+                }
+            }
+        }
+    };
+ 
  
  	@Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -206,12 +227,12 @@ public class YourGame extends Game {
         
          @Override
         public void showInterstitial() {
-             handler.sendEmptyMessage(SHOW_PANEL);
+             handler.sendEmptyMessage(SHOW_INTERSTITIAL_AD);
         }
 
     	@Override
     	public void openPanel() {
-              handler.sendEmptyMessage(HIDE_COLLAPSE_PANEL);
+              handler.sendEmptyMessage(OPEN_PANEL_AD);
     	}
  }
  
