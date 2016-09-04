@@ -70,3 +70,99 @@ Example:
     </application>
 </manifest>
  
+#### Example of adding a widget to activity
+```groovy
+   public class AndroidLauncher extends AndroidApplication {
+   
+    // Add  and game container
+    private RelativeLayout mContainer;
+    // Kidoz Interstitial instance
+    private KidozInterstitial mInterstitial;
+    // Kidoz PAnelView instance
+    private PanelView mPanelView;
+   
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        // Create the layout container
+        mContainer = new RelativeLayout(this);
+
+        // Do the stuff that initialize() would do for you
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+
+        // Create the libgdx View
+        View gameView = initializeForView(new NippyFishGame(this), config);
+        // Add the libgdx view
+        mContainer.addView(gameView);
+
+        // Initialize KIDOZ SDK 
+        KidozSDK.initialize(getContext(), ..publisheID.., ..securityToke..);
+         
+        // Initialize KIDOZ PanelView widget
+        initPanelViewAd();
+        // Initialize KIDOZ Interstitial
+        initInterstitialAd();
+        
+        // Hook it all up
+        setContentView(mContainer);
+     }
+   
+   /** Initialize KIDOZ PanelView widget */
+   private void initPanelViewAd() {
+     mPanelView = new PanelView(this);
+        mPanelView.setPanelConfiguration(PANEL_TYPE.TOP, HANDLE_POSITION.END);
+        mPanelView.setOnPanelViewEventListener(new IOnPanelViewEventListener() {
+            @Override
+            public void onPanelViewCollapsed() {
+            }
+
+            @Override
+            public void onPanelViewExpanded() {
+            }
+            
+            @Override
+            public void onPanelReady() {
+            }
+        });
+      
+        RelativeLayout.LayoutParams adParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+        mContainer.addView(mPanelView, adParams);
+   }
+
+  /** Initialize KIDOZ Interstitial */
+  private void initInterstitialAd()
+  {
+        mKidozInterstitial = new KidozInterstitial(this);
+            mKidozInterstitial.setOnInterstitialEventListener(new BaseInterstitial.IOnInterstitialEventListener()
+            {
+                @Override
+                public void onClosed()
+                {
+                }
+
+                @Override
+                public void onOpened()
+                {
+                }
+
+                @Override
+                public void onReady()
+                {
+                    mKidozInterstitial.show();
+                }
+
+                @Override
+                 public void onLoadFailed()
+                {
+                }
+            });
+  }
+   
+
+``` 
+
+
+
