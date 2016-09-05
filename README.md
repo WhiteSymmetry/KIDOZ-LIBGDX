@@ -8,10 +8,10 @@
 
 For full Documentation of KIDOZ SDK fo Gradle (Android Studio) please take a look at [HERE](https://github.com/Kidoz-SDK/KIDOZ_Android_SDK_Example-Android-Studio)
 
-#### To add KIDOZ SDK to libGDX project add KIDOZ SDK dependency to `build.gradle` file of `android` Module
+#### To add KIDOZ SDK to libGDX projects, add KIDOZ SDK dependency to `build.gradle` file of `android` Module
 <img src="https://s3.amazonaws.com/kidoz-cdn/sdk/GitHub_Tutorial_Img/lib_gdx_tut_1.png" width="200px" height="262px">
 
-#### Add KIDOZ SDK dependency in the android {...} section `build.gradle` file 
+#### Add KIDOZ SDK dependency in the Android {...} section `build.gradle` file 
 ```groovy
 
 android {
@@ -24,8 +24,8 @@ android {
 }
 ```
 
-#### Add AndroidMainifest.xml  Definitions (IMPORTANT) to `AndroidMainifest.xml` file in the same `android` Module
-For correct flow of the SDK, add the following line in your `AndroidMainifest.xml` file, for each `Activity` that uses the SDK functionality.
+#### Add AndroidMainifest.xml  Definitions (IMPORTANT) to `AndroidMainifest.xml` file in the same `android` Module.
+For correct SDK flow, add the following line in your `AndroidMainifest.xml` file, for each `Activity` that uses the SDK functionality.
 ```groovy
  android:configChanges="screenLayout|screenSize|orientation|keyboardHidden|keyboard"
 ``` 
@@ -77,9 +77,9 @@ Example:
    
     // Add  and game container
     private RelativeLayout mContainer;
-    // Kidoz Interstitial instance
+    // KIDOZ Interstitial instance
     private KidozInterstitial mInterstitial;
-    // Kidoz PAnelView instance
+    // KIDOZ PAnelView instance
     private PanelView mPanelView;
    
     @Override
@@ -164,9 +164,9 @@ Example:
    
 ``` 
 
-### How to control the KIDOZ SDK `Widgets` and `Views` from Your Game
+### How to control the KIDOZ SDK `Widgets` and `Views` from your Game:
  
- In the class that Extends Game, create an `Interface` to comunicate with `AndroidLAuncher` class
+ In the class that extends the game, create an `Interface` to comunicate with `AndroidLAuncher` class
  
 ```groovy
 public class YourGame extends Game {
@@ -191,9 +191,9 @@ public class YourGame extends Game {
 
 ```
 
- Let extended `AndroidLauncher` class to implement the `interface` and pass the instance in the constractor of `YourGame`
- also create a `Handler` that will pass the calls to UI Thread to avoid incorrect thread calls.
- That way its posible to controll Kidoz SDK ads from the GAME depending on game logic.
+ Let extended `AndroidLauncher` class implement the `interface` and pass the instance in the constructor of `YourGame`.
+ Also create a `Handler` that will pass the calls to the UI Thread to avoid incorrect thread calls.
+ That way it's possible to control Kidoz SDK ads from the GAME depending on game logic.
  
  ```groovy
  public class AndroidLauncher extends AndroidApplication implements YourGame.IOnAddControllInterface {
