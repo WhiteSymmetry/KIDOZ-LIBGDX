@@ -2,7 +2,67 @@
 [<img src="https://kidoz-cdn.s3.amazonaws.com/wordpress/kidoz_small.gif" width="533px" height="300px">](https://www.youtube.com/watch?v=-ljFjRn7jeM)
 
 
+# libGDX Project Pre Configuration
+To avoid compilation errors please add the folowing lines to LibGDX project structure
+
+Add `jcenter()` tom main project `build.gradle` file
+
+```groovy
+
+allprojects {
+    apply plugin: "eclipse"
+    apply plugin: "idea"
+
+    version = '1.0'
+    ext {
+        appName = "SanmpleApp"
+        gdxVersion = '1.9.4'
+        roboVMVersion = '2.2.0'
+        box2DLightsVersion = '1.4'
+        ashleyVersion = '1.7.0'
+        aiVersion = '1.8.0'
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        jcenter() // <!-- needed to be added before it runs!
+    }
+}
+```
+
+
+make sure the natives for 64bit exists in the dependencies of `project(":android")`
+
+```groovy
+	project(":android") {
+	    apply plugin: "android"
+	
+	    configurations { natives }
+	
+	    dependencies {
+	        compile project(":core")
+	        compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+	        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi"
+	        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
+	        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a" //64bit platform
+	        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
+	        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"  //64bit platform
+	        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+	        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi"
+	        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi-v7a"
+	        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-arm64-v8a"  //64bit platform
+	        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
+	        natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86_64"  //64bit platform
+	    }
+	}
+}
+```
+
 # KIDOZ libGDX Android SETUP
+
 
 *Updated to KIDOZ SDK version 0.5.9*
 
