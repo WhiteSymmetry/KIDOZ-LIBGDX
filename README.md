@@ -2,7 +2,7 @@
 [<img src="https://kidoz-cdn.s3.amazonaws.com/wordpress/kidoz_small.gif" width="533px" height="300px">](https://www.youtube.com/watch?v=-ljFjRn7jeM)
 
 **KIDOZ SDK and the sample App are compatible with Android 4.0 (API level 14) and above.**
-*Updated to KIDOZ SDK version 0.5.9* 
+*Updated to KIDOZ SDK version 0.6.0* 
 
 # libGDX Project Pre Configuration
 To avoid compilation errors please add the folowing lines to LibGDX project structure
@@ -65,8 +65,7 @@ make sure the natives for 64bit exists in the dependencies of `project(":android
 
 # KIDOZ libGDX Android SETUP
 
-
-*Updated to KIDOZ SDK version 0.5.9*
+*Updated to KIDOZ SDK version 0.6.0*
 
 For full Documentation of KIDOZ SDK fo Gradle (Android Studio) please take a look at [HERE](https://github.com/Kidoz-SDK/KIDOZ_Android_SDK_Example-Android-Studio)
 
@@ -81,7 +80,7 @@ android {
     ...
 
    dependencies {
-        compile 'com.kidoz.sdk:KidozSDK:0.5.9'
+        compile 'com.kidoz.sdk:KidozSDK:0.6.0'
    }
 }
 ```
