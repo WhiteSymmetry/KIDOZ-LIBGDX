@@ -127,5 +127,5 @@ idea {
 
 // Kidoz SDK library added Dependency
 dependencies {
-    compile 'com.kidoz.sdk:KidozSDK:0.5.9'
+    compile 'com.kidoz.sdk:KidozSDK:0.6.0'
 }
