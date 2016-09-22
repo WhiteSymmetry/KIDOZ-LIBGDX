@@ -95,8 +95,8 @@ Also add the following permissions:
 
 ```xml
  <uses-permission android:name="android.permission.INTERNET" />
- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="22"/>
- <!-- android:maxSdkVersion="22" is used to avoid permission handling in Android 6.0 and above  -->  
+ <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="19"/>
+ <!-- android:maxSdkVersion="19" is used to avoid permission handling in Android 6.0 and above  -->  
 ``` 
 
 ###### IMPORTANT: Hardware Acceleration must be turned ON!
@@ -110,8 +110,8 @@ Example:
     package="your.package.name">
     
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="22"/>
-    <!-- android:maxSdkVersion="22" is used to avoid permission handling in Android 6.0 and above  -->  
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="19"/>
+    <!-- android:maxSdkVersion="19" is used to avoid permission handling in Android 6.0 and above  -->  
 
     <application android:hardwareAccelerated="true">
         <activity
