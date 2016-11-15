@@ -3,7 +3,7 @@
 
 **IMPORTANT !!! KIDOZ SDK and the sample App are compatible with Android 4.0 (API level 14) and above.**
 <br>
-*Updated to KIDOZ SDK version: *   [ ![Download](https://api.bintray.com/packages/kidoz/maven/kidoz-sdk/images/download.svg?version=0.7.0) ](https://bintray.com/kidoz/maven/kidoz-sdk/0.7.0/link)
+*Updated to KIDOZ SDK version:*   [ ![Download](https://api.bintray.com/packages/kidoz/maven/kidoz-sdk/images/download.svg?version=0.7.0) ](https://bintray.com/kidoz/maven/kidoz-sdk/0.7.0/link)
 
 # libGDX Project Pre Configuration
 To avoid compilation errors please add the folowing lines to LibGDX project structure
