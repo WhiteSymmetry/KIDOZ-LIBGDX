@@ -38,6 +38,7 @@ public class AndroidLauncher extends AndroidApplication implements SampleGame.IO
     private FlexiView mFlexiView;
 
     private final int SHOW_INTERSTITIAL_AD = 1;
+    private final int OPEN_PANEL_AD = 2;
 
     // Execution Handler that execute calls on UI thread
     protected Handler handler = new Handler()
@@ -57,6 +58,12 @@ public class AndroidLauncher extends AndroidApplication implements SampleGame.IO
 
                     break;
                 }
+
+                case OPEN_PANEL_AD: {
+                    mPanelView.expandPanelView();
+                    break;
+                }
+
                 //....
             }
         }
@@ -234,5 +241,11 @@ public class AndroidLauncher extends AndroidApplication implements SampleGame.IO
     {
         // Sents call to show interstitial, executed on UI thread
         handler.sendEmptyMessage(SHOW_INTERSTITIAL_AD);
+    }
+
+    @Override
+    public void openPanel() {
+        // Sents call to open panel widget, executed on UI thread
+        handler.sendEmptyMessage(OPEN_PANEL_AD);
     }
 }

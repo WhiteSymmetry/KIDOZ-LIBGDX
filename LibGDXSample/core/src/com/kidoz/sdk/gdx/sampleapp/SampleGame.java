@@ -67,6 +67,7 @@ public class SampleGame extends ApplicationAdapter
     public interface IOnAddControllInterface
     {
         public void showInterstitial();
+        public void openPanel();
         // ... Additional functions you need
     }
 }
