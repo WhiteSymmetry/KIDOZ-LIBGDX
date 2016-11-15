@@ -1,8 +1,8 @@
 <a href="url"><img src="https://github.com/Kidoz-SDK/Kidoz_Android_SDK_Example/blob/master/graphics/App%20icon.png" align="left" height="72" width="72" ></a><br>
 [<img src="https://kidoz-cdn.s3.amazonaws.com/wordpress/kidoz_small.gif" width="533px" height="300px">](https://www.youtube.com/watch?v=-ljFjRn7jeM)
 
-**KIDOZ SDK and the sample App are compatible with Android 4.0 (API level 14) and above.**
-*Updated to KIDOZ SDK version 0.6.0* 
+**IMPORTANT !!! KIDOZ SDK and the sample App are compatible with Android 4.0 (API level 14) and above.**
+*Updated to KIDOZ SDK version*   [ ![Download](https://api.bintray.com/packages/kidoz/maven/kidoz-sdk/images/download.svg?version=0.7.0) ](https://bintray.com/kidoz/maven/kidoz-sdk/0.7.0/link)
 
 # libGDX Project Pre Configuration
 To avoid compilation errors please add the folowing lines to LibGDX project structure
@@ -65,7 +65,7 @@ make sure the natives for 64bit exists in the dependencies of `project(":android
 
 # KIDOZ libGDX Android SETUP
 
-*Updated to KIDOZ SDK version 0.6.0*
+*Updated to KIDOZ SDK version 0.7.0*
 
 For full Documentation of KIDOZ SDK fo Gradle (Android Studio) please take a look at [HERE](https://github.com/Kidoz-SDK/KIDOZ_Android_SDK_Example-Android-Studio)
 
@@ -80,7 +80,7 @@ android {
     ...
 
    dependencies {
-        compile 'com.kidoz.sdk:KidozSDK:0.6.0'
+        compile 'com.kidoz.sdk:KidozSDK:0.7.0'
    }
 }
 ```
@@ -97,6 +97,26 @@ Also add the following permissions:
  <uses-permission android:name="android.permission.INTERNET" />
  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="19"/>
  <!-- android:maxSdkVersion="19" is used to avoid permission handling in Android 6.0 and above  -->  
+``` 
+
+###### NOTICE!!!
+In case external SD access is needed and requiered to apply/handle `Android 6.0` Permissions request flow,
+add `WRITE_EXTERNAL_STORAGE` permission in the following format in your application `AndroidMainifest.xml` file:
+
+```xml
+ <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"  tools:node="replace"/>
+ <!--  tools:node="replace" is used to replace default libray defenition--> 
+``` 
+To use `tools:node="replace"` add `xmlns:tools="http://schemas.android.com/tools"` in the `<manifest ...  >` tag of `AndroidMainifest.xml` file.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    package="com.your.package"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:versionCode="1"
+    android:versionName="1">
 ``` 
 
 ###### IMPORTANT: Hardware Acceleration must be turned ON!
@@ -268,7 +288,7 @@ public class YourGame extends Game {
 	public void handleMessage(Message msg) {
 	          switch (msg.what) {
 	               case SHOW_INTERSTITIAL_AD: {
-	                    mKidozInterstitial.loadAd();
+	                    mKidozInterstitial.loadAd(KidozInterstitial.AD_TYPE.INTERSTITIAL);
 	                    break;
 	               }
 	               case OPEN_PANEL_AD: {
