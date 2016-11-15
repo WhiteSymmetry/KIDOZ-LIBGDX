@@ -49,7 +49,12 @@ public class AndroidLauncher extends AndroidApplication implements SampleGame.IO
             {
                 case SHOW_INTERSTITIAL_AD:
                 {
-                    mKidozInterstitial.loadAd();
+                    // Load Interstitial View
+                    mKidozInterstitial.loadAd(KidozInterstitial.AD_TYPE.INTERSTITIAL);
+
+                    // Load Rewarded Video Interstitial View
+                    // mKidozInterstitial.loadAd(KidozInterstitial.AD_TYPE.REWARDED_VIDEO);
+
                     break;
                 }
                 //....
