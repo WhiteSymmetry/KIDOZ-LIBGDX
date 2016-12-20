@@ -81,7 +81,7 @@ android {
     ...
 
    dependencies {
-        compile 'com.kidoz.sdk:KidozSDK:0.7.0'
+        compile 'com.kidoz.sdk:KidozSDK:0.7.1'
    }
 }
 ```
