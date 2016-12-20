@@ -1,17 +1,29 @@
 package com.kidoz.sdk.gdx.sampleapp;
 
-import org.robovm.apple.foundation.NSAutoreleasePool;
-import org.robovm.apple.uikit.UIApplication;
-
 import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
 import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
-import com.kidoz.sdk.gdx.sampleapp.SampleGame;
+
+import org.robovm.apple.foundation.NSAutoreleasePool;
+import org.robovm.apple.uikit.UIApplication;
 
 public class IOSLauncher extends IOSApplication.Delegate {
     @Override
     protected IOSApplication createApplication() {
         IOSApplicationConfiguration config = new IOSApplicationConfiguration();
-        return new IOSApplication(new SampleGame(), config);
+        return new IOSApplication(new SampleGame(new SampleGame.IOnAddControllInterface()
+        {
+            @Override
+            public void showInterstitial()
+            {
+
+            }
+
+            @Override
+            public void openPanel()
+            {
+
+            }
+        }), config);
     }
 
     public static void main(String[] argv) {

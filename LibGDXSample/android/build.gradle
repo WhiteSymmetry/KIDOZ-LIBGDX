@@ -1,5 +1,5 @@
 android {
-    buildToolsVersion "23.0.1"
+    buildToolsVersion "23.0.3"
     compileSdkVersion 23
     sourceSets {
         main {
@@ -17,7 +17,7 @@ android {
     defaultConfig {
         applicationId "com.kidoz.sdk.gdx.sampleapp"
         minSdkVersion 14
-        targetSdkVersion 22
+        targetSdkVersion 23
     }
 }
 
@@ -127,5 +127,5 @@ idea {
 
 // Kidoz SDK library added Dependency
 dependencies {
-    compile 'com.kidoz.sdk:KidozSDK:0.7.0'
+    compile 'com.kidoz.sdk:KidozSDK:0.7.1'
 }

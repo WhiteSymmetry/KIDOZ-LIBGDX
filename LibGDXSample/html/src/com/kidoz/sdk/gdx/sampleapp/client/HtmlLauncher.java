@@ -14,6 +14,19 @@ public class HtmlLauncher extends GwtApplication {
 
         @Override
         public ApplicationListener createApplicationListener () {
-                return new SampleGame();
+                return new SampleGame(new SampleGame.IOnAddControllInterface()
+                {
+                        @Override
+                        public void showInterstitial()
+                        {
+
+                        }
+
+                        @Override
+                        public void openPanel()
+                        {
+
+                        }
+                });
         }
 }

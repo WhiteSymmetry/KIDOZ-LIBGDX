@@ -7,6 +7,19 @@ import com.kidoz.sdk.gdx.sampleapp.SampleGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		new LwjglApplication(new SampleGame(), config);
+		new LwjglApplication(new SampleGame(new SampleGame.IOnAddControllInterface()
+		{
+			@Override
+			public void showInterstitial()
+			{
+
+			}
+
+			@Override
+			public void openPanel()
+			{
+
+			}
+		}), config);
 	}
 }
